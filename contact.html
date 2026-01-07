@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Forest Keeper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: #E0FFE0; }
+        
+        .contact-section {
+            padding: 180px 20px 100px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-section h1 {
+            color: #06402B;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-subtitle {
+            color: #444;
+            margin-bottom: 50px;
+        }
+
+        /* Grid untuk Kartu Kontak */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: #f0fff0;
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: #06402B;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: #06402B;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Header penyesuaian */
+        header {
+            background: #06402B;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* PERBAIKAN FOOTER */
+        footer {
+            background-color: #06402B;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #b3e5fc;
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 20px 15px;
+            }
+
+            footer p {
+                font-size: 0.9em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            footer {
+                padding: 18px 10px;
+            }
+
+            footer p {
+                font-size: 0.85em;
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo">Forest Keeper</h2>
+        <nav class="navbar">
+            <a href="index.html">Home <span></span></a>
+            <a href="about.html">About <span></span></a>
+            <a href="team.html">Our Team <span></span></a>
+            <a href="contact.html" class="active">Contact <span></span></a>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <h1>Hubungi Kami</h1>
+        <p class="contact-subtitle">Mari berkolaborasi untuk menjaga kelestarian alam Indonesia.</p>
+        
+        <div class="contact-grid">
+            <a href="mailto:humas@itpln.ac.id" class="contact-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h3>Email</h3>
+                <p>humas@itpln.ac.id</p>
+            </a>
+
+            <a href="https://wa.me/6285172467394" target="_blank" class="contact-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <h3>WhatsApp</h3>
+                <p>085172467394</p>
+            </a>
+
+            <a href="https://www.instagram.com/itpln/" target="_blank" class="contact-card">
+                <i class="fa-brands fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>@itpln</p>
+            </a>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>Lokasi</h3>
+                <p>Menara PLN, Jl. Lkr. Luar Barat, Duri Kosambi, Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11750</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Copyright ITPLN - <a href="https://itpln.ac.id/">Institut Teknologi PLN</a> 2026.</p>
+    </footer>
+</body>
+</html>

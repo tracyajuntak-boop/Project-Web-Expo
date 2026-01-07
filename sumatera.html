@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulau Sumatera</title>
+
+    <style>
+        /* --- RESET & GLOBAL STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E0FFE0;
+            color: #1a1a1a;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 180px 20px 40px; 
+        }
+
+        .section-header { margin: 60px 0 70px; }
+        .section-header:first-child { margin-top: 0; }
+        .section-header h1 { color: #2d3748; font-size: 3rem; font-weight: bold; margin-bottom: 10px; }
+        .header-line { width: 80px; height: 5px; background: #51A687; }
+
+        /* --- GRID LAYOUT --- */
+        .gallery, .gallery-second {
+            display: grid;
+            gap: 40px; /* Jarak agak renggang agar efek pop-out lebih lega */
+            margin: 30px 0;
+        }
+
+        /* Responsive Columns */
+        @media (max-width: 600px) { .gallery, .gallery-second { grid-template-columns: 1fr; } }
+        @media (min-width: 601px) and (max-width: 992px) { .gallery, .gallery-second { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 993px) {.gallery, .gallery-second { grid-template-columns: repeat(3, 1fr); } }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: #06402B; /* Tambahkan ini */
+        }
+
+        .navbar {
+            background: transparent; /* Ubah dari #06402B */
+            display: flex; /* PENTING: Tambahkan ini */
+            align-items: center; /* PENTING: Tambahkan ini */
+        }
+
+        .logo {
+            background: transparent; /* Ubah dari #06402B */
+            font-size: 2em;
+            color: rgb(255, 255, 255);
+            user-select: none;
+        }
+
+        .navbar a{
+        position: relative;
+        font-size: 1.1em;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+        text-decoration: none;
+        margin: 20px;
+        padding: 6px 15px;
+        transition: .5s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active{
+        color: #000000;
+        }
+
+        .navbar a span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        border-radius: 30px;
+        z-index: -1;
+        transform: scale(0);
+        opacity: 0;
+        transition: .5s;
+        }
+
+        .navbar a:hover span,
+        .navbar a.active span {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* ===================================== */
+/* HEADER RESPONSIVE (SIMPLE)            */
+/* ===================================== */
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: #06402B;
+}
+
+.navbar {
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    background: transparent;
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 6px 15px;
+    transition: .5s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #000000;
+}
+
+.navbar a span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 30px;
+    z-index: -1;
+    transform: scale(0);
+    opacity: 0;
+    transition: .5s;
+}
+
+.navbar a:hover span,
+.navbar a.active span {
+    transform: scale(1);
+    opacity: 1;
+}
+
+    /* ===================================== */
+    /* RESPONSIVE  HEADER                    */
+    /* ===================================== */
+
+    /* Tablet */
+    @media screen and (max-width: 1024px) {
+        .header {
+            padding: 20px 50px;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+        }
+        
+        .navbar a {
+            font-size: 1em;
+            margin-left: 15px;
+        }
+    }
+
+    /* Mobile */
+    @media screen and (max-width: 768px) {
+        .header {
+            padding: 15px 30px;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+        }
+        
+        .navbar a {
+            font-size: 0.9em;
+            margin-left: 10px;
+            padding: 5px 10px;
+        }
+    }
+
+    /* Mobile Small */
+    @media screen and (max-width: 480px) {
+        .header {
+            padding: 12px 20px;
+        }
+        
+        .logo {
+            font-size: 1.2em;
+        }
+        
+        .navbar a {
+            font-size: 0.75em;
+            margin-left: 8px;
+            padding: 4px 8px;
+        }
+    }
+
+        /* --- KARTU ITEM (MODIFIKASI 3D) --- */
+        .gallery-item {
+            background-color: rgba(240,255,240,1);
+            border-radius: 12px;
+            position: relative; /* Wajib untuk z-index */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            
+            /* PENTING: Agar gambar bisa keluar dari kotak */
+            overflow: visible; 
+            z-index: 1; /* Posisi standar */
+        }
+
+        /* Saat Hover: Kartu naik ke lapisan paling atas agar tidak tertutup kartu lain */
+        .gallery-item:hover {
+            z-index: 100; 
+            background-color: rgba(255, 255, 255, 0.6); /* Grid jadi transparan */
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0);
+        }
+
+        /* --- IMAGE WRAPPER --- */
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            
+            /* PENTING: Agar gambar tidak terpotong wadahnya */
+            overflow: visible; 
+        }
+
+        .image-wrapper img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit:fill;
+            filter: grayscale(100%); /* Membuat gambar jadi hitam putih */
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efek membal halus */
+        }
+
+        /* --- LAYER 1: BACKGROUND (JPG) --- */
+        .img-layer-back {
+            z-index: 1;
+            /* Karena overflow visible, kita harus lengkungkan sudut gambar manual */
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        /* --- LAYER 2: DEPAN (PNG) --- */
+        .img-layer-front {
+            z-index: 2;
+            transform-origin: bottom center; /* Zoom mulai dari kaki/bawah */
+            pointer-events: none; /* Agar kursor tidak bingung saat kena gambar yang keluar */
+        }
+
+        /* --- KONTEN TEKS --- */
+        .gallery-item-content {
+            padding: 20px;
+            transition: opacity 0.4s ease;
+            position: relative;
+            z-index: 5; /* Teks di atas background putih */
+            background-color: transparent; 
+            text-align: justify;
+        }
+        
+        .gallery-item h3 { color: #06402B; font-size: 1.1rem; margin-bottom: 10px; font-weight: bold; }
+        .gallery-item p { color: #4a5568; font-size: 0.9rem; line-height: 1.5; }
+
+        /* ========================================= */
+        /* LOGIKA EFEK HOVER (POP-OUT 3D)            */
+        /* ========================================= */
+
+        /* 1. Gambar Background: Jadi Buram & Pudar */
+        .gallery-item:hover .img-layer-back {
+            opacity: 0.5;
+            filter: blur(2px);
+        }
+
+        /* 2. Gambar Depan (PNG): Zoom Besar & Keluar Kotak (3D) */
+        .gallery-item:hover .img-layer-front {
+            transform: scale(1.10); /* Zoom 135% dan naik ke atas */
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.3)); /* Bayangan pada objek 3D */
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    <body>
+    <header class="header">
+    <h2 class="logo">Forest Keeper</h2>
+    <nav class="navbar">
+    <a href="index.html" target="_self">Home <span></span></a>
+    <a href="about.html" target="_self">About <span></span></a>
+    <a href="team.html" target="_self">Our Team <span></span></a>
+    <a href="contact.html" target="_self">Contact <span></span></a>
+    </nav>
+    </header>
+
+    <div class="container">
+        <div class="section-header">
+            <h1>Fauna</h1>
+            <div class="header-line"></div>
+        </div>
+        <div class="gallery" id="galleryGrid"></div>
+
+        <div class="section-header">
+            <h1>Flora</h1>
+            <div class="header-line"></div>
+        </div>
+        <div class="gallery-second" id="gallerySecond"></div>
+    </div>
+
+    
+
+    <script>
+        // DATA FAUNA
+        const artikel = [
+            {
+                judul: "Harimau Sumatera",
+                deskripsi: "Harimau Sumatera adalah subspesies harimau terakhir yang masih hidup di Indonesia dan endemik Pulau Sumatra. Ukurannya lebih kecil dibanding harimau Asia lainnya, dengan loreng hitam lebih rapat. Hewan ini merupakan predator puncak yang berperan penting menjaga keseimbangan ekosistem hutan. Populasinya terus terancam akibat perusakan habitat, perburuan liar, dan konflik dengan manusia, sehingga status keberadaanya Kritis (Critically Endangered).",
+                gambarLatar: "Assets/Picture1.jpg", // Ganti 'Assets/BackgroundHutan.jpg'
+                gambarPng: "Assets/IMG_7782.PNG", // Ganti 'Assets/Harimau.png'
+            },
+            {
+                judul: "Orangutan Sumatera ",
+                deskripsi: "Orangutan Sumatera dikenal sebagai salah satu primata paling cerdas di dunia. Hewan ini hidup di pepohonan dan berperan sebagai penyebar biji alami. Kehilangan hutan menyebabkan populasi terfragmentasi sehingga sulit berkembang biak.",
+                gambarLatar: "Assets/OrangUtan.jpg", 
+                gambarPng: "Assets/OrangUtan.png.png", 
+            },
+            {
+                judul: "Gajah Sumatera",
+                deskripsi: "Gajah Sumatera adalah mamalia darat terbesar di Indonesia. Hewan ini berperan dalam membuka jalur hutan dan menyebarkan biji tumbuhan. Konflik dengan manusia sering terjadi akibat menyusutnya habitat alami.",
+                gambarLatar: "Assets/GajahSumatera.jpg", 
+                gambarPng: "Assets/VSkQ9MSbYkWh6rtR4iDwjeuYkDwujeb8eg9BXyHu-removebg-preview (1).png", 
+            },
+        ];
+
+        // DATA FLORA
+        const referensi = [
+            {
+                judul: "Rafflesia Arnoldii",
+                deskripsi: "Rafflesia arnoldii adalah bunga terbesar di dunia dan merupakan flora endemik Sumatera (terutama Bengkulu, Sumatra Barat, dan Sumatra Selatan). Bunga ini tidak memiliki daun, batang, dan akar, serta hidup sebagai parasit pada tanaman inang tertentu. Saat mekar, bunga mengeluarkan bau menyengat seperti bangkai untuk menarik serangga penyerbuk. Kelangkaannya disebabkan oleh kerusakan hutan dan sulitnya siklus hidup bunga ini.",
+                gambarLatar: "Assets/Picture2.jpg", 
+                gambarPng: "Assets/IMG_7787.PNG", 
+            },
+          
+        ];
+
+        function renderContent(dataArray, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            dataArray.forEach((item) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `
+                    <div class="image-wrapper">
+                        <img class="img-layer-back" src="${item.gambarLatar}" alt="Latar">
+                        <img class="img-layer-front" src="${item.gambarPng}" alt="Depan">
+                    </div>
+                    <div class="gallery-item-content">
+                        <h3>${item.judul}</h3>
+                        <p>${item.deskripsi}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        window.onload = function() {
+            renderContent(artikel, 'galleryGrid');
+            renderContent(referensi, 'gallerySecond');
+        };
+    </script>
+</body>
+</html>

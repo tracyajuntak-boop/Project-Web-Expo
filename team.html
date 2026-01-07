@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Forest Keeper</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: #E0FFE0; }
+        
+        .team-section {
+            padding: 150px 20px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team-section h1 {
+            color: #06402B;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* Container Kartu Anggota */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Lingkaran Foto */
+        .image-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #E0FFE0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Agar foto tidak gepeng */
+        }
+
+        .team-card h3 {
+            color: #06402B;
+            margin-bottom: 5px;
+        }
+
+        .team-card p {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Navigasi tetap terlihat */
+        header {
+            background: #06402B;
+            position: fixed;
+            width: 100%;
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo">Forest Keeper</h2>
+        <nav class="navbar">
+            <a href="index.html">Home <span></span></a>
+            <a href="about.html">About <span></span></a>
+            <a href="team.html" class="active">Our Team <span></span></a>
+            <a href="contact.html">Contact <span></span></a>
+        </nav>
+    </header>
+
+    <section class="team-section">
+        <h1>Anggota Tim Kami</h1>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="Assets/foto_tracy.jpeg" alt="Foto Anggota">
+                </div>
+                <h3>Tracy C Simanjuntak</h3>
+                <p>202431143</p>
+            </div>
+
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="Assets/foto_fitriya1.jpeg" alt="Foto Anggota">
+                </div>
+                <h3>Fitrya Irfan</h3>
+                <p>202431073</p>
+            </div>
+
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="Assets/foto_Egi.jpeg" alt="Foto Anggota">
+                </div>
+                <h3>Egi Vioneuva Pradana</h3>
+                <p>202431060</p>
+            </div>
+
+            <div class="team-card">
+                <div class="image-container">
+                    <img src="Assets/foto_indi.jpeg" alt="Foto Anggota">
+                </div>
+                <h3>Indi Nurlistiani Ali</h3>
+                <p>202431190</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
